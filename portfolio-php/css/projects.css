@@ -1,0 +1,125 @@
+/* ============================================================
+   PROJECTS SECTION
+   ============================================================ */
+
+#projects.projects-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition);
+  min-height: 280px;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.18);
+  border-color: transparent;
+}
+
+.project-card__accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 24px 24px 0 0;
+  transition: height var(--transition);
+}
+
+.project-card:hover .project-card__accent {
+  height: 100%;
+  opacity: 0.07;
+  border-radius: 24px;
+}
+
+.project-card__accent--purple { background: #6c63ff; }
+.project-card__accent--cyan   { background: #06b6d4; }
+.project-card__accent--amber  { background: #f59e0b; }
+.project-card__accent--green  { background: #22c55e; }
+
+.project-card__body {
+  padding: 32px 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.project-num {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.project-sub {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.project-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.project-tags span {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(108, 99, 255, 0.10);
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  padding: 4px 13px;
+  border-radius: 50px;
+  transition: all var(--transition);
+}
+
+.project-card__overlay {
+  position: absolute;
+  bottom: 24px; right: 24px;
+  z-index: 1;
+  opacity: 0.06;
+  color: var(--accent);
+  transition: all var(--transition);
+  pointer-events: none;
+}
+
+.project-card:hover .project-card__overlay {
+  opacity: 0.14;
+  transform: scale(1.2) rotate(-10deg);
+}
+
+.project-card__icon-wrap { font-size: 3rem; line-height: 1; }
+
+@media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }

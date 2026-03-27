@@ -1,0 +1,325 @@
+/* ============================================================
+   GLOBAL STYLES — Anto Portfolio
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --accent: #6c63ff;
+  --accent-2: #06b6d4;
+  --accent-grad: linear-gradient(135deg, #6c63ff 0%, #06b6d4 100%);
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --radius-card: 20px;
+  --radius-btn: 50px;
+
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Light */
+  --bg: #f5f5f7;
+  --bg-card: #ffffff;
+  --bg-nav: rgba(245, 245, 247, 0.72);
+  --text: #0a0a12;
+  --text-muted: #64748b;
+  --border: rgba(0, 0, 0, 0.08);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  --shadow-hover: 0 20px 60px rgba(108, 99, 255, 0.22);
+  --nav-border: rgba(0, 0, 0, 0.10);
+}
+
+body.dark {
+  --bg: #07080f;
+  --bg-card: #111827;
+  --bg-nav: rgba(7, 8, 15, 0.80);
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.07);
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.50);
+  --shadow-hover: 0 20px 60px rgba(108, 99, 255, 0.35);
+  --nav-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  padding-top: 72px;
+  transition: background var(--transition), color var(--transition);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+section { scroll-margin-top: 80px; }
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text);
+}
+
+/* ── Section headings ── */
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(108, 99, 255, 0.10);
+  padding: 4px 14px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.section-title .accent {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Cards ── */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+}
+
+/* ── Buttons ── */
+.btn-primary-grad {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-grad);
+  color: #fff !important;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 13px 32px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 4px 24px rgba(108, 99, 255, 0.35);
+  text-decoration: none;
+}
+
+.btn-primary-grad:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(108, 99, 255, 0.50);
+}
+
+.btn-outline-grad {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--accent) !important;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-btn);
+  padding: 12px 30px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.btn-outline-grad:hover {
+  background: var(--accent-grad);
+  color: #fff !important;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(108, 99, 255, 0.35);
+}
+
+/* ── Navbar ── */
+.glass-nav {
+  background: var(--bg-nav) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.07);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.brand-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text) !important;
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: auto;
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-grad);
+  display: inline-block;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.brand-accent {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.nav-links .nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-muted) !important;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 50px;
+  transition: all var(--transition);
+  position: relative;
+  letter-spacing: 0.01em;
+}
+
+.nav-links .nav-link:hover {
+  color: var(--text) !important;
+  background: rgba(108, 99, 255, 0.08);
+}
+
+.nav-links .nav-link.active {
+  color: #fff !important;
+  background: var(--accent-grad);
+  box-shadow: 0 3px 16px rgba(108, 99, 255, 0.40);
+}
+
+/* ── Theme Toggle ── */
+.theme-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(108, 99, 255, 0.30);
+  transform: rotate(20deg);
+}
+
+/* ── Footer ── */
+.site-footer {
+  position: relative;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  overflow: hidden;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-brand {
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.footer-divider { opacity: 0.3; }
+
+.footer-glow {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 80px;
+  background: var(--accent);
+  filter: blur(60px);
+  opacity: 0.06;
+  border-radius: 50%;
+}
+
+/* ── Utility ── */
+.gradient-text {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+  opacity: 0.6;
+}
